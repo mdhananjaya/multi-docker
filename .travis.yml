@@ -8,8 +8,7 @@ before_install:
   - docker build -t dhananjayam/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true dhananjayam/react-test npm test
-
+  - docker run -e CI=true dhananjayam/react-test npm test -- --coverage
 after_success:
   - docker build -t dhananjayam/multi-client ./client
   - docker build -t dhananjayam/multi-nginx ./nginx
